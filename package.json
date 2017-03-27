@@ -1,0 +1,32 @@
+{
+  "name": "arraybuffer-utils",
+  "version": "1.0.0",
+  "description": "A simple utility for manipulating arraybuffers",
+  "main": "index.js",
+  "keywords": [
+    "arraybuffer",
+    "offset",
+    "dataview",
+    "utils"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stauzx/arraybuffer-utils.git"
+  },
+  "author": "Tony Xu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stauzx/arraybuffer-utils/issues"
+  },
+  "homepage": "https://github.com/stauzx/arraybuffer-utils#readme"
+}
