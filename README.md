@@ -2,6 +2,10 @@
 
 Make writing and reading data from the standard built-in object ArrayBuffer easier
 
+## Installation
+
+`$ npm install arraybuffer-utils`
+
 ## Basic feature list
 * Chainable functions
 * Remembers offset
