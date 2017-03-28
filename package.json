@@ -1,6 +1,6 @@
 {
   "name": "arraybuffer-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple utility for manipulating arraybuffers",
   "main": "index.js",
   "keywords": [

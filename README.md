@@ -6,6 +6,9 @@ Make writing and reading data from the standard built-in object ArrayBuffer easi
 
 `$ npm install arraybuffer-utils`
 
+## Documentation
+[Click to view online documentations](http://stauzx.com/docs/js/arraybuffer-utils "Click to View Documentations")
+
 ## Basic feature list
 * Chainable functions
 * Remembers offset
@@ -27,9 +30,9 @@ var BufferReader = ArrayBufferUtils.BufferReader();
 function write(){
 	var arrayBuffer = new ArrayBuffer(30);
     var bufferWriter = new BufferWriter(arrayBuffer); //second and third parameters are optional
-    var bufferWriter = new BufferWriter(arrayBuffer, 0); 
+    var bufferWriter = new BufferWriter(arrayBuffer, 0);
     var bufferWriter = new BufferWriter(arrayBuffer, 0, false);
-    
+
     //chainable functions
     bufferWriter
     	.writeInt8(1)		//offset is now 1
@@ -42,10 +45,12 @@ function write(){
         .writeUint32(6)		//offset is now 14
         .writeFloat32(7)	//offset is now 18
         .writeFloat64(8);	//offset is now 26
-        
-   	var offset = bufferWriter.getOffset(); 	//returns current offset
+        .writeChar("A")     //offset is now 28
+        .writeString("Hello World!")    //offset is now 54 (increased by (12 + 1) * 2)
+
+    var offset = bufferWriter.getOffset(); 	//returns current offset
     var size = bufferWriter.getSize(); 		//returns size of arraybuffer in bytes
-    
+
     var littleEndian = bufferWriter.isLittleEndian(); 	//returns true if currently using little endian
     var bigEndian = bufferWriter.isBigEndian();			//returns true if currently using big endian
 }
@@ -57,9 +62,9 @@ function write(){
 function write(){
 	var arrayBuffer = new ArrayBuffer(30);
     var bufferReader = new BufferReader(arrayBuffer); //second and third parameters are optional
-    var bufferReader = new BufferReader(arrayBuffer, 0); 
+    var bufferReader = new BufferReader(arrayBuffer, 0);
     var bufferReader = new BufferReader(arrayBuffer, 0, false);
-   	
+
     var int8 = bufferReader.readInt8();			//offset is now 1
     var uInt8 = bufferReader.readUint8();		//offset is now 2
     var int16 = bufferReader.readInt16();		//offset is now 4
@@ -68,13 +73,15 @@ function write(){
     var uInt32 = bufferReader.readUint32();		//offset is now 14
     var float32 = bufferReader.readFloat32();	//offset is now 18
     var float64 = bufferReader.readFloat64();	//offset is now 26
-        
-   	var offset = bufferReader.getOffset(); 	//returns current offset
+    var char = bufferReader.writeChar("A")     //offset is now 28
+    var string = bufferReader.writeString("Hello World!")    //offset is now 54 (increased by (12 + 1) * 2)
+
+    var offset = bufferReader.getOffset(); 	//returns current offset
     var size = bufferReader.getSize(); 		//returns size of arraybuffer in bytes
-    
+
     bufferReader.useLittleEndian(); 	//change to little endian
     bufferReader.useBigEndian();		//change to big endian
-    
+
     var littleEndian = bufferReader.isLittleEndian(); 	//returns true if currently using little endian
     var bigEndian = bufferReader.isBigEndian();			//returns true if currently using big endian
 }

@@ -65,6 +65,24 @@ describe('core functions', function(){
         expect(float64).to.equal(8);
     });
 
+    it("writing and reading char and string", function(){
+        var arrayBuffer = new ArrayBuffer(50);
+        var bufferWriter = new BufferWriter(arrayBuffer);
+        bufferWriter.writeString("Hello World!").writeChar("W");
+
+        var bufferReader = new BufferReader(arrayBuffer);
+        var string = bufferReader.readString();
+        var char = bufferReader.readChar();
+        expect(string).to.equal("Hello World!");
+        expect(char).to.equal("W");
+
+        var bufferReaderLE = new BufferReader(arrayBuffer, 0, true);
+        var string2 = bufferReader.readString();
+        var char2 = bufferReader.readChar();
+        expect(string2).to.not.equal("Hello World!");
+        expect(char2).to.not.equal("W");
+    });
+
     it("endianness", function(){
         var arrayBuffer = new ArrayBuffer(50);
         var bufferWriter = new BufferWriter(arrayBuffer);

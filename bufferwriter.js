@@ -15,7 +15,31 @@ module.exports = function(){
     }
 
     /**
-     * Write a signed 8-bit integer at the current offset
+     * Write a null-terminated string of UTF-16 characters at the current offset <br>
+     * Increase offset by the 2 * (length of string + 1)
+     * @param {Number} value - The string to be written
+     */
+    BufferWriter.prototype.writeString = function(value){
+        for(var i = 0; i < value.length; i++){
+            this.writeChar(value[i]);
+        }
+        this.writeUint16(0);
+        return this;
+    };
+
+    /**
+     * Write a single UTF-16 character at the current offset <br>
+     * Increase offset by 2
+     * @param {Number} value - The character to be written
+     */
+    BufferWriter.prototype.writeChar = function(value){
+        this.writeUint16(value.charCodeAt(0));
+        return this;
+    };
+
+    /**
+     * Write a signed 8-bit integer at the current offset <br>
+     * Increase offset by 1
      * @param {Number} value - The signed 8-bit integer to be written
      */
     BufferWriter.prototype.writeInt8 = function(value){
@@ -25,7 +49,8 @@ module.exports = function(){
     };
 
     /**
-     * Write an unsigned 8-bit integer at the current offset
+     * Write an unsigned 8-bit integer at the current offset <br>
+     * Increase offset by 1
      * @param {Number} value - The unsigned 8-bit integer to be written
      */
     BufferWriter.prototype.writeUint8 = function(value){
@@ -35,7 +60,8 @@ module.exports = function(){
     };
 
     /**
-     * Write a signed 16-bit integer at the current offset
+     * Write a signed 16-bit integer at the current offset <br>
+     * Increase offset by 2
      * @param {Number} value - The signed 16-bit integer to be written
      */
     BufferWriter.prototype.writeInt16 = function(value){
@@ -45,7 +71,8 @@ module.exports = function(){
     };
 
     /**
-     * Write an unsigned 16-bit integer at the current offset
+     * Write an unsigned 16-bit integer at the current offset <br>
+     * Increase offset by 2
      * @param {Number} value - The unsigned 16-bit integer to be written
      */
     BufferWriter.prototype.writeUint16 = function(value){
@@ -55,7 +82,8 @@ module.exports = function(){
     };
 
     /**
-     * Write a signed 32-bit integer at the current offset
+     * Write a signed 32-bit integer at the current offset <br>
+     * Increase offset by 4
      * @param {Number} value - The signed 32-bit integer to be written
      */
     BufferWriter.prototype.writeInt32 = function(value){
@@ -65,7 +93,8 @@ module.exports = function(){
     };
 
     /**
-     * Write an unsigned 32-bit integer at the current offset
+     * Write an unsigned 32-bit integer at the current offset <br>
+     * Increase offset by 4
      * @param {Number} value - The unsigned 32-bit integer to be written
      */
     BufferWriter.prototype.writeUint32 = function(value){
@@ -75,7 +104,8 @@ module.exports = function(){
     };
 
     /**
-     * Write a 32-bit float at the current offset
+     * Write a 32-bit float at the current offset <br>
+     * Increase offset by 4
      * @param {Number} value - The 32-bit float to be written
      */
     BufferWriter.prototype.writeFloat32 = function(value){
@@ -85,7 +115,8 @@ module.exports = function(){
     };
 
     /**
-     * Write a 64-bit float at the current offset
+     * Write a 64-bit float at the current offset <br>
+     * Increase offset by 8
      * @param {Number} value - The 64-bit float to be written
      */
     BufferWriter.prototype.writeFloat64 = function(value){
