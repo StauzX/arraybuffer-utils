@@ -7,7 +7,7 @@ Make writing and reading data from the standard built-in object ArrayBuffer easi
 `$ npm install arraybuffer-utils`
 
 ## Documentation
-[Click to view online documentations](http://stauzx.com/docs/js/arraybuffer-utils "Click to View Documentations")
+[Click to view online documentations](http://yuntonyx.com/docs/js/arraybuffer-utils "Click to View Documentations")
 
 ## Basic feature list
 * Chainable functions
